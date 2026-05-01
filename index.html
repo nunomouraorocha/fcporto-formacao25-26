@@ -26,8 +26,6 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; background: var(--cinza-f); color: var(--texto); min-height: 100vh; }
-
-/* ── NAV ── */
 nav { background: var(--azul); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
 .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; padding: 0 1.5rem; height: 56px; gap: 4px; }
 .nav-logo { color: #fff; font-size: 15px; font-weight: 700; margin-right: auto; display: flex; align-items: center; gap: 10px; text-decoration: none; letter-spacing: 0.02em; }
@@ -35,22 +33,14 @@ nav { background: var(--azul); position: sticky; top: 0; z-index: 100; box-shado
 .nav-link { color: rgba(255,255,255,0.75); font-size: 13px; padding: 0 14px; height: 56px; display: flex; align-items: center; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.15s; white-space: nowrap; text-decoration: none; }
 .nav-link:hover { color: #fff; }
 .nav-link.active { color: #fff; border-bottom-color: #fff; }
-
-/* ── LOADING ── */
 #loading { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 60vh; gap: 16px; }
 .spinner { width: 40px; height: 40px; border: 3px solid var(--azul-claro); border-top-color: var(--azul); border-radius: 50%; animation: spin 0.8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
-
-/* ── MAIN ── */
 main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
-
-/* ── CARDS GENÉRICOS ── */
 .card { background: var(--branco); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; margin-bottom: 1.5rem; }
 .card-title { font-size: 13px; font-weight: 700; color: var(--azul); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--azul-claro); }
-
-/* ── HOME ── */
 .destaque-card { background: var(--azul); border-radius: var(--radius); padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); }
-.destaque-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,0.3); flex-shrink: 0; background: rgba(255,255,255,0.1); }
+.destaque-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,0.3); flex-shrink: 0; }
 .destaque-avatar-placeholder { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; font-weight: 700; flex-shrink: 0; }
 .destaque-info { flex: 1; }
 .destaque-label { font-size: 11px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
@@ -60,7 +50,6 @@ main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
 .d-stat { text-align: center; }
 .d-stat-val { font-size: 28px; font-weight: 800; color: #fff; line-height: 1; }
 .d-stat-label { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px; }
-
 .escaloes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
 @media(max-width:700px){ .escaloes-grid { grid-template-columns: 1fr; } }
 .escalao-card { background: var(--branco); border-radius: var(--radius); padding: 1.25rem; cursor: pointer; box-shadow: var(--shadow); border: 2px solid transparent; transition: all 0.18s; }
@@ -75,22 +64,15 @@ main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
 .dot-e { background: var(--amarelo); }
 .dot-d { background: var(--vermelho); }
 .dot-x { background: var(--cinza-b); }
-
-/* ── ESCALÃO PAGE ── */
 .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
 .page-title { font-size: 24px; font-weight: 800; color: var(--azul); }
 .team-toggle { display: flex; gap: 6px; }
 .team-btn { font-size: 12px; padding: 6px 16px; border: 1.5px solid var(--azul); border-radius: 20px; cursor: pointer; color: var(--azul); background: transparent; font-weight: 600; transition: all 0.15s; }
 .team-btn.active { background: var(--azul); color: #fff; }
-
 .tabs { display: flex; border-bottom: 2px solid var(--azul-claro); margin-bottom: 1.5rem; }
 .tab { font-size: 13px; padding: 10px 18px; cursor: pointer; color: var(--texto2); border-bottom: 3px solid transparent; margin-bottom: -2px; font-weight: 500; transition: all 0.15s; }
 .tab:hover { color: var(--azul); }
 .tab.active { color: var(--azul); border-bottom-color: var(--azul); font-weight: 700; }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-
-/* ── PLANTEL ── */
 .plantel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
 .player-card { background: var(--branco); border-radius: var(--radius); padding: 12px 14px; display: flex; align-items: center; gap: 12px; cursor: pointer; box-shadow: var(--shadow); border: 1.5px solid transparent; transition: all 0.15s; }
 .player-card:hover { border-color: var(--azul); transform: translateY(-1px); }
@@ -105,30 +87,15 @@ main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
 .player-flag { width: 20px; flex-shrink: 0; }
 .pos-section { margin-bottom: 1.5rem; }
 .pos-header { font-size: 11px; font-weight: 700; color: var(--azul); text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 10px; background: var(--azul-claro); border-radius: 6px; margin-bottom: 10px; }
-
-/* ── STATS ── */
 .phase-toggle { display: flex; gap: 6px; margin-bottom: 1.25rem; }
 .phase-btn { font-size: 12px; padding: 6px 14px; border: 1.5px solid var(--cinza-b); border-radius: 20px; cursor: pointer; color: var(--texto2); background: transparent; font-weight: 500; transition: all 0.15s; }
 .phase-btn.active { background: var(--azul); color: #fff; border-color: var(--azul); }
-.classif-section { margin-bottom: 1.5rem; }
-.classif-subtitle { font-size: 11px; color: var(--texto2); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
-.classif-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.classif-table th { color: var(--texto2); font-weight: 600; padding: 8px 10px; text-align: center; border-bottom: 1.5px solid var(--cinza-b); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
-.classif-table th:first-child { text-align: left; }
-.classif-table td { padding: 9px 10px; border-bottom: 1px solid var(--cinza-b); text-align: center; }
-.classif-table td:first-child { text-align: left; font-weight: 500; }
-.classif-table tr.porto td { background: var(--azul-claro); color: var(--azul); font-weight: 700; }
-.classif-table tr:last-child td { border-bottom: none; }
-.rank-col { color: var(--texto2); font-weight: 400; }
-
 .top-list { list-style: none; }
 .top-list li { display: flex; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--cinza-b); gap: 10px; font-size: 13px; }
 .top-list li:last-child { border-bottom: none; }
 .top-rank { font-size: 12px; color: var(--texto2); width: 20px; }
 .top-name { flex: 1; font-weight: 500; }
 .top-val { font-weight: 800; color: var(--azul); font-size: 15px; }
-
-/* ── JOGOS ── */
 .result-list { list-style: none; }
 .result-item { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--cinza-b); gap: 12px; }
 .result-item:last-child { border-bottom: none; }
@@ -138,8 +105,6 @@ main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
 .score-v { background: var(--verde-bg); color: var(--verde); }
 .score-e { background: var(--amarelo-bg); color: #a07800; }
 .score-d { background: var(--vermelho-bg); color: var(--vermelho); }
-
-/* ── PERFIL ── */
 .back-btn { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--azul); cursor: pointer; margin-bottom: 1.25rem; font-weight: 600; background: none; border: none; padding: 0; }
 .back-btn:hover { text-decoration: underline; }
 .profile-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
@@ -151,20 +116,16 @@ main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
 .p-stat { text-align: center; }
 .p-stat-val { font-size: 26px; font-weight: 800; color: var(--azul); line-height: 1; }
 .p-stat-label { font-size: 11px; color: var(--texto2); margin-top: 4px; }
-
 .checkpoints { display: flex; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap; }
 .checkpoint { border: 1.5px solid var(--cinza-b); border-radius: 8px; padding: 10px 14px; flex: 1; min-width: 140px; display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--texto2); }
 .checkpoint.done { border-color: var(--verde); background: var(--verde-bg); color: var(--verde); }
 .check-icon { width: 18px; height: 18px; border-radius: 50%; border: 2px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; }
 .checkpoint.done .check-icon { background: var(--verde); color: #fff; }
-
 .evo-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .evo-table th { color: var(--texto2); font-weight: 600; padding: 8px 12px; text-align: left; border-bottom: 1.5px solid var(--cinza-b); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
 .evo-table td { padding: 9px 12px; border-bottom: 1px solid var(--cinza-b); }
 .evo-table tr:last-child td { border-bottom: none; }
 .evo-badge { background: var(--azul-claro); color: var(--azul); font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 20px; display: inline-block; }
-
-/* ── MOVIMENTOS ── */
 .mov-list { list-style: none; }
 .mov-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--cinza-b); }
 .mov-item:last-child { border-bottom: none; }
@@ -177,10 +138,9 @@ main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
 .mov-name { font-weight: 700; font-size: 13px; flex: 1; }
 .mov-detail { font-size: 12px; color: var(--texto2); }
 .mov-date { font-size: 11px; color: var(--texto2); white-space: nowrap; }
-
-/* ── EMPTY STATE ── */
 .empty { text-align: center; padding: 3rem 1rem; color: var(--texto2); font-size: 14px; }
 .empty-icon { font-size: 40px; margin-bottom: 1rem; }
+.debug-box { background: #fffbe6; border: 1px solid #f0d000; border-radius: 8px; padding: 12px 16px; margin-bottom: 1.5rem; font-size: 12px; font-family: monospace; line-height: 1.8; }
 </style>
 </head>
 <body>
@@ -208,7 +168,7 @@ main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
 <script>
 const SHEET_ID = '1pLNky8uPoqnC-EUBaaVpQBCla4gUbtpZF0cV6T_aLF0';
 
-let DATA = { jogadores: [], estatisticas: [], jogos: [], movimentos: [], config: {} };
+let DATA = { jogadores: [], estatisticas: [], jogos: [], movimentos: [], config: {}, debug: [] };
 let currentPage = 'home';
 let currentEscalao = null;
 let currentEquipa = 'A';
@@ -219,13 +179,18 @@ async function loadSheet(sheetName) {
   const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(sheetName)}&range=A2:Z`;
   const res = await fetch(url);
   const text = await res.text();
-  const json = JSON.parse(text.substring(47).slice(0,-2));
+  const match = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/);
+  if (!match) throw new Error('Resposta inválida para: ' + sheetName);
+  const json = JSON.parse(match[1]);
   const cols = json.table.cols.map(c => c.label);
-  return json.table.rows.map(row => {
+  DATA.debug.push(`${sheetName}: colunas=[${cols.join(', ')}]`);
+  const rows = (json.table.rows || []).map(row => {
     const obj = {};
     row.c.forEach((cell, i) => { obj[cols[i]] = cell ? cell.v : ''; });
     return obj;
   });
+  DATA.debug.push(`${sheetName}: ${rows.length} linhas brutas`);
+  return rows;
 }
 
 async function loadAllData() {
@@ -243,18 +208,27 @@ async function loadAllData() {
     DATA.movimentos = movs.filter(m => m.Nome_Jogador);
     DATA.config = {};
     cfg.forEach(row => {
-      const chave = row['Parâmetro'] || row[Object.keys(row)[0]];
-      const valor = row['Valor'] || row[Object.keys(row)[1]];
+      const keys = Object.keys(row);
+      const chave = row[keys[0]];
+      const valor = row[keys[1]];
       if (chave) DATA.config[chave] = valor || '';
     });
+    DATA.debug.push(`Após filtro: ${DATA.jogadores.length} jogadores, ${DATA.estatisticas.length} stats`);
+    if (DATA.estatisticas.length > 0) {
+      const s0 = DATA.estatisticas[0];
+      DATA.debug.push(`1ª stat: Nome="${s0.Nome}" Escalão="${s0['Escalão']}" Equipa="${s0.Equipa}"`);
+    }
+    if (DATA.jogadores.length > 0) {
+      const j0 = DATA.jogadores[0];
+      DATA.debug.push(`1º jogador: Nome="${j0.Nome}" Posição="${j0['Posição']}"`);
+    }
     renderPage(currentPage);
   } catch(e) {
     document.getElementById('main-content').innerHTML = `
       <div class="card" style="text-align:center;padding:3rem;">
         <div style="font-size:40px;margin-bottom:1rem;">⚠️</div>
-        <p style="font-weight:700;color:var(--azul);font-size:16px;margin-bottom:8px;">Não foi possível carregar os dados</p>
-        <p style="color:var(--texto2);font-size:13px;">Verifica se o Google Sheets está partilhado publicamente.</p>
-        <p style="margin-top:12px;font-size:12px;color:#aaa;">Erro: ${e.message}</p>
+        <p style="font-weight:700;color:var(--azul);font-size:16px;margin-bottom:8px;">Erro ao carregar dados</p>
+        <p style="color:var(--texto2);font-size:13px;">${e.message}</p>
       </div>`;
   }
 }
@@ -324,10 +298,9 @@ function renderHome() {
     const jogosB = DATA.jogos.filter(g => g['Escalão'] === esc.sheet && g.Equipa === 'B' && g.Resultado);
     const formaA = buildForma(jogosA);
     const formaB = buildForma(jogosB);
-    const numJog = DATA.jogadores.filter(j => {
-      return DATA.estatisticas.some(s => s.Nome === j.Nome && s['Escalão'] === esc.sheet);
-    }).length;
-
+    const numJog = DATA.jogadores.filter(j =>
+      DATA.estatisticas.some(s => s.Nome === j.Nome && s['Escalão'] === esc.sheet)
+    ).length;
     return `
       <div class="escalao-card" onclick="showPage('${esc.id}')">
         <h3>${esc.label}</h3>
@@ -337,7 +310,10 @@ function renderHome() {
       </div>`;
   }).join('');
 
+  const debugHtml = `<div class="debug-box"><b>🔍 Debug (temporário):</b><br>${DATA.debug.join('<br>')}</div>`;
+
   return `
+    ${debugHtml}
     ${destaqueHtml}
     <div class="card">
       <div class="card-title">Época ${epoca}</div>
@@ -349,9 +325,9 @@ function buildForma(jogos) {
   const ultimos = jogos.slice(-5);
   const dots = ultimos.map(j => {
     const r = j.Resultado;
-    if (r === 'V') return `<div class="dot dot-v" title="Vitória">V</div>`;
-    if (r === 'E') return `<div class="dot dot-e" title="Empate">E</div>`;
-    if (r === 'D') return `<div class="dot dot-d" title="Derrota">D</div>`;
+    if (r === 'V') return `<div class="dot dot-v">V</div>`;
+    if (r === 'E') return `<div class="dot dot-e">E</div>`;
+    if (r === 'D') return `<div class="dot dot-d">D</div>`;
     return '';
   });
   while(dots.length < 5) dots.unshift(`<div class="dot dot-x"></div>`);
@@ -361,7 +337,6 @@ function buildForma(jogos) {
 function renderEscalao() {
   const labels = { sub15: 'Sub-15', sub17: 'Sub-17', sub19: 'Sub-19' };
   const sheetName = labels[currentEscalao];
-
   return `
     <div class="page-header">
       <div class="page-title">${sheetName}</div>
@@ -382,52 +357,41 @@ function renderEscalao() {
     </div>`;
 }
 
-function switchEquipa(eq) {
-  currentEquipa = eq;
-  document.getElementById('main-content').innerHTML = renderEscalao();
-}
-function switchTab(tab) {
-  currentTab = tab;
-  document.getElementById('main-content').innerHTML = renderEscalao();
-}
+function switchEquipa(eq) { currentEquipa = eq; document.getElementById('main-content').innerHTML = renderEscalao(); }
+function switchTab(tab) { currentTab = tab; document.getElementById('main-content').innerHTML = renderEscalao(); }
 
 function renderPlantel(escalao) {
-  const jogadores = DATA.jogadores.filter(j => {
-    return DATA.estatisticas.some(s => s.Nome === j.Nome && s['Escalão'] === escalao && s.Equipa === currentEquipa);
-  });
-
+  const jogadores = DATA.jogadores.filter(j =>
+    DATA.estatisticas.some(s => s.Nome === j.Nome && s['Escalão'] === escalao && s.Equipa === currentEquipa)
+  );
   const posOrder = ['GR','DEF','MED','AV'];
   const posLabel = { GR: 'Guarda-Redes', DEF: 'Defesa', MED: 'Médio', AV: 'Avançado' };
-
   if (!jogadores.length) return `<div class="empty"><div class="empty-icon">👥</div><p>Sem jogadores registados para esta equipa.</p></div>`;
-
   return posOrder.map(pos => {
     const grupo = jogadores.filter(j => j['Posição'] === pos);
     if (!grupo.length) return '';
     const cards = grupo.map(j => {
       const stats = DATA.estatisticas.filter(s => s.Nome === j.Nome && s['Escalão'] === escalao && s.Equipa === currentEquipa);
-      const golos = stats.reduce((a,s) => a + (parseInt(s.Golos)||0), 0);
-      const ams = stats.reduce((a,s) => a + (parseInt(s.AM)||0), 0);
-      const jogosN = stats.reduce((a,s) => a + (parseInt(s.Jogos)||0), 0);
-      const cs = pos === 'GR' ? stats.reduce((a,s) => a + (parseInt(s.Clean_Sheets)||0), 0) : null;
+      const golos = stats.reduce((a,s) => a+(parseInt(s.Golos)||0),0);
+      const ams = stats.reduce((a,s) => a+(parseInt(s.AM)||0),0);
+      const jogosN = stats.reduce((a,s) => a+(parseInt(s.Jogos)||0),0);
+      const cs = pos==='GR' ? stats.reduce((a,s) => a+(parseInt(s.Clean_Sheets)||0),0) : null;
       const initials = j.Nome.split(' ').map(w=>w[0]).slice(0,2).join('');
       const codPais = (j.Cod_Pais||'pt').toLowerCase();
-
       return `<div class="player-card" onclick="renderJogador('${j.ZeroZero_ID}','${escalao}')">
         ${j.Foto_URL
-          ? `<img class="player-photo" src="${j.Foto_URL}" alt="${j.Nome}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-             <div class="player-initials" style="display:none">${initials}</div>`
+          ? `<img class="player-photo" src="${j.Foto_URL}" alt="${j.Nome}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="player-initials" style="display:none">${initials}</div>`
           : `<div class="player-initials">${initials}</div>`}
         <div class="player-info">
           <div class="player-name">${j.Nome}</div>
           <div class="player-pos">${posLabel[pos]}</div>
           <div class="player-stats-mini">
-            ${pos === 'GR'
+            ${pos==='GR'
               ? `<span class="ps"><b>${cs}</b> CS</span><span class="ps"><b>${jogosN}</b> jog</span>`
               : `<span class="ps"><b>${golos}</b> gol</span><span class="ps"><b>${ams}</b> AM</span><span class="ps"><b>${jogosN}</b> jog</span>`}
           </div>
         </div>
-        <img class="player-flag" src="https://flagcdn.com/w40/${codPais}.png" alt="${j['Nacionalidade']||''}" title="${j['Nacionalidade']||''}" onerror="this.style.display='none'">
+        <img class="player-flag" src="https://flagcdn.com/w40/${codPais}.png" onerror="this.style.display='none'">
       </div>`;
     }).join('');
     return `<div class="pos-section"><div class="pos-header">${posLabel[pos]}</div><div class="plantel-grid">${cards}</div></div>`;
@@ -435,216 +399,99 @@ function renderPlantel(escalao) {
 }
 
 function renderStats(escalao) {
-  const phaseToggle = `
-    <div class="phase-toggle">
-      <button class="phase-btn ${currentPhase==='Fase Regional Norte'?'active':''}" onclick="switchPhase('Fase Regional Norte')">Fase Regional Norte</button>
-      <button class="phase-btn ${currentPhase==='Fase Nacional'?'active':''}" onclick="switchPhase('Fase Nacional')">Fase Nacional</button>
-    </div>`;
-
-  const statsFiltered = DATA.estatisticas.filter(s =>
-    s['Escalão'] === escalao && s.Equipa === currentEquipa && s.Fase === currentPhase
-  );
-
-  const topMarcadores = statsFiltered
-    .filter(s => { const j = DATA.jogadores.find(jj => jj.Nome === s.Nome); return j && j['Posição'] !== 'GR'; })
-    .sort((a,b) => (parseInt(b.Golos)||0) - (parseInt(a.Golos)||0))
-    .slice(0, 5);
-
-  const topJogadores = [...statsFiltered]
-    .sort((a,b) => (parseInt(b.Jogos)||0) - (parseInt(a.Jogos)||0))
-    .slice(0, 5);
-
-  const topGRs = statsFiltered
-    .filter(s => { const j = DATA.jogadores.find(jj => jj.Nome === s.Nome); return j && j['Posição'] === 'GR'; })
-    .sort((a,b) => (parseInt(b.Clean_Sheets)||0) - (parseInt(a.Clean_Sheets)||0))
-    .slice(0, 3);
-
-  const marcadoresHtml = topMarcadores.length
-    ? `<ul class="top-list">${topMarcadores.map((s,i) => `
-        <li><span class="top-rank">${i+1}</span>
-        <span class="top-name" onclick="renderJogador('${findZZId(s.Nome)}','${escalao}')" style="cursor:pointer;color:var(--azul)">${s.Nome}</span>
-        <span class="top-val">${parseInt(s.Golos)||0}</span></li>`).join('')}</ul>`
-    : `<div class="empty" style="padding:1rem;font-size:12px;">Sem dados de golos ainda.</div>`;
-
-  const topJogsHtml = topJogadores.length
-    ? `<ul class="top-list">${topJogadores.map((s,i) => `
-        <li><span class="top-rank">${i+1}</span>
-        <span class="top-name">${s.Nome}</span>
-        <span class="top-val">${parseInt(s.Jogos)||0}</span></li>`).join('')}</ul>`
-    : `<div class="empty" style="padding:1rem;font-size:12px;">Sem dados ainda.</div>`;
-
-  const topGRsHtml = topGRs.length
-    ? `<ul class="top-list">${topGRs.map((s,i) => `
-        <li><span class="top-rank">${i+1}</span>
-        <span class="top-name">${s.Nome}</span>
-        <span class="top-val">${parseInt(s.Clean_Sheets)||0}</span></li>`).join('')}</ul>`
-    : '';
-
-  return `
-    ${phaseToggle}
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-      <div class="card"><div class="card-title">Top Marcadores</div>${marcadoresHtml}</div>
-      <div class="card"><div class="card-title">Mais Jogos</div>${topJogsHtml}</div>
-      ${topGRsHtml ? `<div class="card"><div class="card-title">Clean Sheets</div>${topGRsHtml}</div>` : ''}
-    </div>`;
+  const phaseToggle = `<div class="phase-toggle">
+    <button class="phase-btn ${currentPhase==='Fase Regional Norte'?'active':''}" onclick="switchPhase('Fase Regional Norte')">Fase Regional Norte</button>
+    <button class="phase-btn ${currentPhase==='Fase Nacional'?'active':''}" onclick="switchPhase('Fase Nacional')">Fase Nacional</button>
+  </div>`;
+  const sf = DATA.estatisticas.filter(s => s['Escalão']===escalao && s.Equipa===currentEquipa && s.Fase===currentPhase);
+  const topM = sf.filter(s=>{const j=DATA.jogadores.find(jj=>jj.Nome===s.Nome);return j&&j['Posição']!=='GR';}).sort((a,b)=>(parseInt(b.Golos)||0)-(parseInt(a.Golos)||0)).slice(0,5);
+  const topJ = [...sf].sort((a,b)=>(parseInt(b.Jogos)||0)-(parseInt(a.Jogos)||0)).slice(0,5);
+  const topGR = sf.filter(s=>{const j=DATA.jogadores.find(jj=>jj.Nome===s.Nome);return j&&j['Posição']==='GR';}).sort((a,b)=>(parseInt(b.Clean_Sheets)||0)-(parseInt(a.Clean_Sheets)||0)).slice(0,3);
+  const mHtml = topM.length ? `<ul class="top-list">${topM.map((s,i)=>`<li><span class="top-rank">${i+1}</span><span class="top-name" onclick="renderJogador('${findZZId(s.Nome)}','${escalao}')" style="cursor:pointer;color:var(--azul)">${s.Nome}</span><span class="top-val">${parseInt(s.Golos)||0}</span></li>`).join('')}</ul>` : `<div class="empty" style="padding:1rem;font-size:12px;">Sem dados ainda.</div>`;
+  const jHtml = topJ.length ? `<ul class="top-list">${topJ.map((s,i)=>`<li><span class="top-rank">${i+1}</span><span class="top-name">${s.Nome}</span><span class="top-val">${parseInt(s.Jogos)||0}</span></li>`).join('')}</ul>` : `<div class="empty" style="padding:1rem;font-size:12px;">Sem dados ainda.</div>`;
+  const grHtml = topGR.length ? `<ul class="top-list">${topGR.map((s,i)=>`<li><span class="top-rank">${i+1}</span><span class="top-name">${s.Nome}</span><span class="top-val">${parseInt(s.Clean_Sheets)||0}</span></li>`).join('')}</ul>` : '';
+  return `${phaseToggle}<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;"><div class="card"><div class="card-title">Top Marcadores</div>${mHtml}</div><div class="card"><div class="card-title">Mais Jogos</div>${jHtml}</div>${grHtml?`<div class="card"><div class="card-title">Clean Sheets</div>${grHtml}</div>`:''}</div>`;
 }
 
 function switchPhase(phase) {
   currentPhase = phase;
   const labels = { sub15:'Sub-15', sub17:'Sub-17', sub19:'Sub-19' };
-  document.getElementById('tab-content').innerHTML =
-    currentTab === 'stats' ? renderStats(labels[currentEscalao]) :
-    currentTab === 'jogos' ? renderJogos(labels[currentEscalao]) : '';
+  document.getElementById('tab-content').innerHTML = currentTab==='stats' ? renderStats(labels[currentEscalao]) : currentTab==='jogos' ? renderJogos(labels[currentEscalao]) : '';
 }
 
 function renderJogos(escalao) {
-  const jogos = DATA.jogos.filter(g => g['Escalão'] === escalao && g.Equipa === currentEquipa);
-
-  const phaseToggle = `
-    <div class="phase-toggle" style="margin-bottom:1rem;">
-      <button class="phase-btn ${currentPhase==='Fase Regional Norte'?'active':''}" onclick="switchPhase('Fase Regional Norte')">Fase Regional Norte</button>
-      <button class="phase-btn ${currentPhase==='Fase Nacional'?'active':''}" onclick="switchPhase('Fase Nacional')">Fase Nacional</button>
-    </div>`;
-
-  const filtered = jogos.filter(g => g.Fase === currentPhase);
-
-  if (!filtered.length) return phaseToggle + `<div class="empty"><div class="empty-icon">📋</div><p>Sem jogos registados para esta fase.</p></div>`;
-
+  const jogos = DATA.jogos.filter(g => g['Escalão']===escalao && g.Equipa===currentEquipa);
+  const phaseToggle = `<div class="phase-toggle" style="margin-bottom:1rem;"><button class="phase-btn ${currentPhase==='Fase Regional Norte'?'active':''}" onclick="switchPhase('Fase Regional Norte')">Fase Regional Norte</button><button class="phase-btn ${currentPhase==='Fase Nacional'?'active':''}" onclick="switchPhase('Fase Nacional')">Fase Nacional</button></div>`;
+  const filtered = jogos.filter(g => g.Fase===currentPhase);
+  if (!filtered.length) return phaseToggle+`<div class="empty"><div class="empty-icon">📋</div><p>Sem jogos registados.</p></div>`;
   const items = [...filtered].reverse().map(g => {
     const res = g.Resultado;
-    const scoreClass = res === 'V' ? 'score-v' : res === 'E' ? 'score-e' : 'score-d';
-    const score = (g.Golos_Porto !== '' && g.Golos_Adv !== '') ? `${g.Golos_Porto} – ${g.Golos_Adv}` : '— – —';
-    const local = g.Local === 'Casa' ? '🏠' : '✈️';
-    return `<li class="result-item">
-      <span class="result-date">${formatDate(g.Data)}</span>
-      <span class="result-teams">${local} FC Porto vs ${g['Adversário']||'—'}</span>
-      <span class="result-score ${scoreClass}">${score}</span>
-    </li>`;
+    const sc = res==='V'?'score-v':res==='E'?'score-e':'score-d';
+    const score = (g.Golos_Porto!==''&&g.Golos_Adv!=='')?`${g.Golos_Porto} – ${g.Golos_Adv}`:'— – —';
+    return `<li class="result-item"><span class="result-date">${formatDate(g.Data)}</span><span class="result-teams">${g.Local==='Casa'?'🏠':'✈️'} FC Porto vs ${g['Adversário']||'—'}</span><span class="result-score ${sc}">${score}</span></li>`;
   }).join('');
-
-  return phaseToggle + `<div class="card"><ul class="result-list">${items}</ul></div>`;
+  return phaseToggle+`<div class="card"><ul class="result-list">${items}</ul></div>`;
 }
 
 function formatDate(d) {
   if (!d) return '';
-  try {
-    const dt = new Date(d);
-    return dt.toLocaleDateString('pt-PT', { day:'2-digit', month:'short' });
-  } catch { return d; }
+  try { return new Date(d).toLocaleDateString('pt-PT',{day:'2-digit',month:'short'}); } catch { return d; }
 }
 
 function findZZId(nome) {
-  const j = DATA.jogadores.find(jj => jj.Nome === nome);
-  return j?.ZeroZero_ID || '';
+  return DATA.jogadores.find(j => j.Nome===nome)?.ZeroZero_ID || '';
 }
 
 function renderJogador(zzId, escalaoOrigem) {
-  const j = DATA.jogadores.find(jj => String(jj.ZeroZero_ID) === String(zzId));
+  const j = DATA.jogadores.find(jj => String(jj.ZeroZero_ID)===String(zzId));
   if (!j) return;
-
   const posLabel = { GR:'Guarda-Redes', DEF:'Defesa', MED:'Médio', AV:'Avançado' };
   const initials = j.Nome.split(' ').map(w=>w[0]).slice(0,2).join('');
   const codPais = (j.Cod_Pais||'pt').toLowerCase();
-
-  const allStats = DATA.estatisticas.filter(s => s.Nome === j.Nome);
-  const totalGolos = allStats.reduce((a,s) => a + (parseInt(s.Golos)||0), 0);
-  const totalJogos = allStats.reduce((a,s) => a + (parseInt(s.Jogos)||0), 0);
-  const totalAM = allStats.reduce((a,s) => a + (parseInt(s.AM)||0), 0);
-  const totalAV = allStats.reduce((a,s) => a + (parseInt(s.AV)||0), 0);
-  const totalCS = j['Posição'] === 'GR' ? allStats.reduce((a,s) => a + (parseInt(s.Clean_Sheets)||0), 0) : null;
-
-  const treinouA = j.Treinou_c_A === 'Sim';
-  const jogouB = j.Jogou_na_B === 'Sim';
-  const estreiaA = j.Estreia_Equipa_A ? j.Estreia_Equipa_A : false;
-
-  const escalaosList = [...new Set(allStats.map(s => `${s['Escalão']} ${s.Equipa}`))];
-
-  const main = document.getElementById('main-content');
-  main.innerHTML = `
+  const allStats = DATA.estatisticas.filter(s => s.Nome===j.Nome);
+  const totalGolos = allStats.reduce((a,s)=>a+(parseInt(s.Golos)||0),0);
+  const totalJogos = allStats.reduce((a,s)=>a+(parseInt(s.Jogos)||0),0);
+  const totalAM = allStats.reduce((a,s)=>a+(parseInt(s.AM)||0),0);
+  const totalAV = allStats.reduce((a,s)=>a+(parseInt(s.AV)||0),0);
+  const totalCS = j['Posição']==='GR' ? allStats.reduce((a,s)=>a+(parseInt(s.Clean_Sheets)||0),0) : null;
+  const treinouA = j.Treinou_c_A==='Sim';
+  const jogouB = j.Jogou_na_B==='Sim';
+  const estreiaA = j.Estreia_Equipa_A || false;
+  const escalaosList = [...new Set(allStats.map(s=>`${s['Escalão']} ${s.Equipa}`))];
+  document.getElementById('main-content').innerHTML = `
     <button class="back-btn" onclick="showPage('${currentEscalao}')">← Voltar ao ${escalaoOrigem}</button>
-    <div class="card">
-      <div class="profile-header">
-        <div>
-          ${j.Foto_URL
-            ? `<img class="profile-photo" src="${j.Foto_URL}" alt="${j.Nome}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-               <div class="profile-initials" style="display:none">${initials}</div>`
-            : `<div class="profile-initials">${initials}</div>`}
-        </div>
-        <div>
-          <div class="profile-name">
-            ${j.Nome}
-            <img src="https://flagcdn.com/w40/${codPais}.png" style="height:18px;border-radius:2px;" title="${j['Nacionalidade']||''}" onerror="this.style.display='none'">
-          </div>
-          <div class="profile-meta">${posLabel[j['Posição']]||j['Posição']} · ${j.Idade} anos · ${j['Nacionalidade']||''}</div>
-          <div class="profile-meta" style="margin-top:4px;">Escalões: ${escalaosList.join(' · ')}</div>
-        </div>
-        <div class="profile-stats">
-          <div class="p-stat"><div class="p-stat-val">${totalJogos}</div><div class="p-stat-label">Jogos</div></div>
-          ${j['Posição'] === 'GR'
-            ? `<div class="p-stat"><div class="p-stat-val">${totalCS}</div><div class="p-stat-label">Clean Sheets</div></div>`
-            : `<div class="p-stat"><div class="p-stat-val">${totalGolos}</div><div class="p-stat-label">Golos</div></div>`}
-          <div class="p-stat"><div class="p-stat-val">${totalAM}</div><div class="p-stat-label">Amarelos</div></div>
-          <div class="p-stat"><div class="p-stat-val">${totalAV}</div><div class="p-stat-label">Vermelhos</div></div>
-        </div>
+    <div class="card"><div class="profile-header">
+      <div>${j.Foto_URL?`<img class="profile-photo" src="${j.Foto_URL}" alt="${j.Nome}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="profile-initials" style="display:none">${initials}</div>`:`<div class="profile-initials">${initials}</div>`}</div>
+      <div>
+        <div class="profile-name">${j.Nome}<img src="https://flagcdn.com/w40/${codPais}.png" style="height:18px;border-radius:2px;" onerror="this.style.display='none'"></div>
+        <div class="profile-meta">${posLabel[j['Posição']]||j['Posição']} · ${j.Idade} anos · ${j['Nacionalidade']||''}</div>
+        <div class="profile-meta" style="margin-top:4px;">Escalões: ${escalaosList.join(' · ')}</div>
       </div>
-    </div>
-
+      <div class="profile-stats">
+        <div class="p-stat"><div class="p-stat-val">${totalJogos}</div><div class="p-stat-label">Jogos</div></div>
+        ${j['Posição']==='GR'?`<div class="p-stat"><div class="p-stat-val">${totalCS}</div><div class="p-stat-label">Clean Sheets</div></div>`:`<div class="p-stat"><div class="p-stat-val">${totalGolos}</div><div class="p-stat-label">Golos</div></div>`}
+        <div class="p-stat"><div class="p-stat-val">${totalAM}</div><div class="p-stat-label">Amarelos</div></div>
+        <div class="p-stat"><div class="p-stat-val">${totalAV}</div><div class="p-stat-label">Vermelhos</div></div>
+      </div>
+    </div></div>
     <div class="checkpoints">
-      <div class="checkpoint ${jogouB?'done':''}">
-        <div class="check-icon">${jogouB?'✓':''}</div>
-        Jogou na Equipa B
-      </div>
-      <div class="checkpoint ${treinouA?'done':''}">
-        <div class="check-icon">${treinouA?'✓':''}</div>
-        Treinou c/ Equipa A
-      </div>
-      <div class="checkpoint ${estreiaA?'done':''}">
-        <div class="check-icon">${estreiaA?'✓':''}</div>
-        ${estreiaA ? `Estreia Equipa A (${estreiaA})` : 'Estreia Equipa A'}
-      </div>
+      <div class="checkpoint ${jogouB?'done':''}"><div class="check-icon">${jogouB?'✓':''}</div>Jogou na Equipa B</div>
+      <div class="checkpoint ${treinouA?'done':''}"><div class="check-icon">${treinouA?'✓':''}</div>Treinou c/ Equipa A</div>
+      <div class="checkpoint ${estreiaA?'done':''}"><div class="check-icon">${estreiaA?'✓':''}</div>${estreiaA?`Estreia Equipa A (${estreiaA})`:'Estreia Equipa A'}</div>
     </div>
-
-    <div class="card">
-      <div class="card-title">Evolução Histórica</div>
-      <table class="evo-table">
-        <thead><tr><th>Época</th><th>Clube</th><th>Escalão</th><th>Jogos</th><th>Golos</th><th>AM</th><th>AV</th></tr></thead>
-        <tbody>
-          ${allStats.length
-            ? allStats.map(s => `<tr>
-                <td>2025/26</td>
-                <td>FC Porto</td>
-                <td><span class="evo-badge">${s['Escalão']} ${s.Equipa} · ${s.Fase === 'Fase Regional Norte' ? 'Reg.' : 'Nac.'}</span></td>
-                <td>${parseInt(s.Jogos)||0}</td>
-                <td>${parseInt(s.Golos)||0}</td>
-                <td>${parseInt(s.AM)||0}</td>
-                <td>${parseInt(s.AV)||0}</td>
-              </tr>`).join('')
-            : `<tr><td colspan="7" style="text-align:center;color:var(--texto2);padding:1rem;">Sem dados históricos ainda.</td></tr>`}
-        </tbody>
+    <div class="card"><div class="card-title">Evolução Histórica</div>
+      <table class="evo-table"><thead><tr><th>Época</th><th>Clube</th><th>Escalão</th><th>Jogos</th><th>Golos</th><th>AM</th><th>AV</th></tr></thead>
+      <tbody>${allStats.length?allStats.map(s=>`<tr><td>2025/26</td><td>FC Porto</td><td><span class="evo-badge">${s['Escalão']} ${s.Equipa} · ${s.Fase==='Fase Regional Norte'?'Reg.':'Nac.'}</span></td><td>${parseInt(s.Jogos)||0}</td><td>${parseInt(s.Golos)||0}</td><td>${parseInt(s.AM)||0}</td><td>${parseInt(s.AV)||0}</td></tr>`).join(''):`<tr><td colspan="7" style="text-align:center;color:var(--texto2);padding:1rem;">Sem dados.</td></tr>`}</tbody>
       </table>
     </div>
-
-    <div class="card" style="text-align:center;">
-      <a href="${j.ZeroZero_URL||'#'}" target="_blank" style="color:var(--azul);font-size:13px;font-weight:600;text-decoration:none;">Ver perfil completo no ZeroZero →</a>
-    </div>`;
+    <div class="card" style="text-align:center;"><a href="${j.ZeroZero_URL||'#'}" target="_blank" style="color:var(--azul);font-size:13px;font-weight:600;text-decoration:none;">Ver perfil no ZeroZero →</a></div>`;
 }
 
 function renderMovimentos() {
-  if (!DATA.movimentos.length) return `<div class="card"><div class="empty"><div class="empty-icon">📋</div><p>Sem movimentos registados ainda.</p></div></div>`;
-
-  const badgeClass = { 'Subiu':'subiu','Entrada':'entrada','Dispensado':'dispensado','Treinou c/A':'treinou','Estreia A':'estreia' };
-
-  const items = DATA.movimentos.map(m => {
-    const cls = badgeClass[m.Tipo] || 'entrada';
-    return `<li class="mov-item">
-      <span class="mov-date">${formatDate(m.Data)}</span>
-      <span class="mov-badge ${cls}">${m.Tipo}</span>
-      <span class="mov-name">${m.Nome_Jogador}</span>
-      <span class="mov-detail">${m.Detalhe||''} ${m['Escalão_Destino'] ? '→ '+m['Escalão_Destino'] : ''}</span>
-    </li>`;
-  }).join('');
-
-  return `<div class="card"><div class="card-title">Movimentos do Plantel 2025/26</div><ul class="mov-list">${items}</ul></div>`;
+  if (!DATA.movimentos.length) return `<div class="card"><div class="empty"><div class="empty-icon">📋</div><p>Sem movimentos ainda.</p></div></div>`;
+  const badgeClass = {'Subiu':'subiu','Entrada':'entrada','Dispensado':'dispensado','Treinou c/A':'treinou','Estreia A':'estreia'};
+  const items = DATA.movimentos.map(m=>`<li class="mov-item"><span class="mov-date">${formatDate(m.Data)}</span><span class="mov-badge ${badgeClass[m.Tipo]||'entrada'}">${m.Tipo}</span><span class="mov-name">${m.Nome_Jogador}</span><span class="mov-detail">${m.Detalhe||''} ${m['Escalão_Destino']?'→ '+m['Escalão_Destino']:''}</span></li>`).join('');
+  return `<div class="card"><div class="card-title">Movimentos 2025/26</div><ul class="mov-list">${items}</ul></div>`;
 }
 
 loadAllData();
