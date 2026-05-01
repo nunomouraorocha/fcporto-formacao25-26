@@ -216,7 +216,7 @@ let currentTab = 'plantel';
 let currentPhase = 'Fase Regional Norte';
 
 async function loadSheet(sheetName) {
-  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(sheetName)}`;
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(sheetName)}&range=A2:Z`;
   const res = await fetch(url);
   const text = await res.text();
   const json = JSON.parse(text.substring(47).slice(0,-2));
@@ -239,17 +239,21 @@ async function loadAllData() {
     ]);
     DATA.jogadores = jogs.filter(j => j.Nome);
     DATA.estatisticas = stats.filter(s => s.Nome);
-    DATA.jogos = jogos.filter(g => g.Data || g.Adversário);
+    DATA.jogos = jogos.filter(g => g.Data || g['Adversário']);
     DATA.movimentos = movs.filter(m => m.Nome_Jogador);
     DATA.config = {};
-    cfg.forEach(row => { if (row.Parâmetro) DATA.config[row.Parâmetro] = row[''] || row[Object.keys(row)[1]] || ''; });
+    cfg.forEach(row => {
+      const chave = row['Parâmetro'] || row[Object.keys(row)[0]];
+      const valor = row['Valor'] || row[Object.keys(row)[1]];
+      if (chave) DATA.config[chave] = valor || '';
+    });
     renderPage(currentPage);
   } catch(e) {
     document.getElementById('main-content').innerHTML = `
       <div class="card" style="text-align:center;padding:3rem;">
         <div style="font-size:40px;margin-bottom:1rem;">⚠️</div>
         <p style="font-weight:700;color:var(--azul);font-size:16px;margin-bottom:8px;">Não foi possível carregar os dados</p>
-        <p style="color:var(--texto2);font-size:13px;">Verifica se o ID do Google Sheets está correcto e se a folha está partilhada publicamente.</p>
+        <p style="color:var(--texto2);font-size:13px;">Verifica se o Google Sheets está partilhado publicamente.</p>
         <p style="margin-top:12px;font-size:12px;color:#aaa;">Erro: ${e.message}</p>
       </div>`;
   }
@@ -268,7 +272,6 @@ function showPage(page, escalao) {
 function renderPage(page) {
   const main = document.getElementById('main-content');
   if (page === 'home') main.innerHTML = renderHome();
-  else if (page === 'escalao') main.innerHTML = renderEscalao();
   else if (page === 'movimentos') main.innerHTML = renderMovimentos();
   else if (['sub15','sub17','sub19'].includes(page)) {
     currentEscalao = page;
@@ -317,12 +320,12 @@ function renderHome() {
   ];
 
   const escalaoCards = escaloes.map(esc => {
-    const jogosA = DATA.jogos.filter(g => g.Escalão === esc.sheet && g.Equipa === 'A' && g.Resultado);
-    const jogosB = DATA.jogos.filter(g => g.Escalão === esc.sheet && g.Equipa === 'B' && g.Resultado);
+    const jogosA = DATA.jogos.filter(g => g['Escalão'] === esc.sheet && g.Equipa === 'A' && g.Resultado);
+    const jogosB = DATA.jogos.filter(g => g['Escalão'] === esc.sheet && g.Equipa === 'B' && g.Resultado);
     const formaA = buildForma(jogosA);
     const formaB = buildForma(jogosB);
     const numJog = DATA.jogadores.filter(j => {
-      return DATA.estatisticas.some(s => s.Nome === j.Nome && s.Escalão === esc.sheet);
+      return DATA.estatisticas.some(s => s.Nome === j.Nome && s['Escalão'] === esc.sheet);
     }).length;
 
     return `
@@ -390,7 +393,7 @@ function switchTab(tab) {
 
 function renderPlantel(escalao) {
   const jogadores = DATA.jogadores.filter(j => {
-    return DATA.estatisticas.some(s => s.Nome === j.Nome && s.Escalão === escalao && s.Equipa === currentEquipa);
+    return DATA.estatisticas.some(s => s.Nome === j.Nome && s['Escalão'] === escalao && s.Equipa === currentEquipa);
   });
 
   const posOrder = ['GR','DEF','MED','AV'];
@@ -399,10 +402,10 @@ function renderPlantel(escalao) {
   if (!jogadores.length) return `<div class="empty"><div class="empty-icon">👥</div><p>Sem jogadores registados para esta equipa.</p></div>`;
 
   return posOrder.map(pos => {
-    const grupo = jogadores.filter(j => j.Posição === pos);
+    const grupo = jogadores.filter(j => j['Posição'] === pos);
     if (!grupo.length) return '';
     const cards = grupo.map(j => {
-      const stats = DATA.estatisticas.filter(s => s.Nome === j.Nome && s.Escalão === escalao && s.Equipa === currentEquipa);
+      const stats = DATA.estatisticas.filter(s => s.Nome === j.Nome && s['Escalão'] === escalao && s.Equipa === currentEquipa);
       const golos = stats.reduce((a,s) => a + (parseInt(s.Golos)||0), 0);
       const ams = stats.reduce((a,s) => a + (parseInt(s.AM)||0), 0);
       const jogosN = stats.reduce((a,s) => a + (parseInt(s.Jogos)||0), 0);
@@ -424,7 +427,7 @@ function renderPlantel(escalao) {
               : `<span class="ps"><b>${golos}</b> gol</span><span class="ps"><b>${ams}</b> AM</span><span class="ps"><b>${jogosN}</b> jog</span>`}
           </div>
         </div>
-        <img class="player-flag" src="https://flagcdn.com/w40/${codPais}.png" alt="${j.Nacionalidade||''}" title="${j.Nacionalidade||''}" onerror="this.style.display='none'">
+        <img class="player-flag" src="https://flagcdn.com/w40/${codPais}.png" alt="${j['Nacionalidade']||''}" title="${j['Nacionalidade']||''}" onerror="this.style.display='none'">
       </div>`;
     }).join('');
     return `<div class="pos-section"><div class="pos-header">${posLabel[pos]}</div><div class="plantel-grid">${cards}</div></div>`;
@@ -439,11 +442,11 @@ function renderStats(escalao) {
     </div>`;
 
   const statsFiltered = DATA.estatisticas.filter(s =>
-    s.Escalão === escalao && s.Equipa === currentEquipa && s.Fase === currentPhase
+    s['Escalão'] === escalao && s.Equipa === currentEquipa && s.Fase === currentPhase
   );
 
   const topMarcadores = statsFiltered
-    .filter(s => { const j = DATA.jogadores.find(jj => jj.Nome === s.Nome); return j && j.Posição !== 'GR'; })
+    .filter(s => { const j = DATA.jogadores.find(jj => jj.Nome === s.Nome); return j && j['Posição'] !== 'GR'; })
     .sort((a,b) => (parseInt(b.Golos)||0) - (parseInt(a.Golos)||0))
     .slice(0, 5);
 
@@ -452,7 +455,7 @@ function renderStats(escalao) {
     .slice(0, 5);
 
   const topGRs = statsFiltered
-    .filter(s => { const j = DATA.jogadores.find(jj => jj.Nome === s.Nome); return j && j.Posição === 'GR'; })
+    .filter(s => { const j = DATA.jogadores.find(jj => jj.Nome === s.Nome); return j && j['Posição'] === 'GR'; })
     .sort((a,b) => (parseInt(b.Clean_Sheets)||0) - (parseInt(a.Clean_Sheets)||0))
     .slice(0, 3);
 
@@ -468,7 +471,7 @@ function renderStats(escalao) {
         <li><span class="top-rank">${i+1}</span>
         <span class="top-name">${s.Nome}</span>
         <span class="top-val">${parseInt(s.Jogos)||0}</span></li>`).join('')}</ul>`
-    : `<div class="empty" style="padding:1rem;font-size:12px;">Sem dados de jogos ainda.</div>`;
+    : `<div class="empty" style="padding:1rem;font-size:12px;">Sem dados ainda.</div>`;
 
   const topGRsHtml = topGRs.length
     ? `<ul class="top-list">${topGRs.map((s,i) => `
@@ -495,7 +498,7 @@ function switchPhase(phase) {
 }
 
 function renderJogos(escalao) {
-  const jogos = DATA.jogos.filter(g => g.Escalão === escalao && g.Equipa === currentEquipa);
+  const jogos = DATA.jogos.filter(g => g['Escalão'] === escalao && g.Equipa === currentEquipa);
 
   const phaseToggle = `
     <div class="phase-toggle" style="margin-bottom:1rem;">
@@ -514,7 +517,7 @@ function renderJogos(escalao) {
     const local = g.Local === 'Casa' ? '🏠' : '✈️';
     return `<li class="result-item">
       <span class="result-date">${formatDate(g.Data)}</span>
-      <span class="result-teams">${local} FC Porto vs ${g.Adversário||'—'}</span>
+      <span class="result-teams">${local} FC Porto vs ${g['Adversário']||'—'}</span>
       <span class="result-score ${scoreClass}">${score}</span>
     </li>`;
   }).join('');
@@ -548,13 +551,13 @@ function renderJogador(zzId, escalaoOrigem) {
   const totalJogos = allStats.reduce((a,s) => a + (parseInt(s.Jogos)||0), 0);
   const totalAM = allStats.reduce((a,s) => a + (parseInt(s.AM)||0), 0);
   const totalAV = allStats.reduce((a,s) => a + (parseInt(s.AV)||0), 0);
-  const totalCS = j.Posição === 'GR' ? allStats.reduce((a,s) => a + (parseInt(s.Clean_Sheets)||0), 0) : null;
+  const totalCS = j['Posição'] === 'GR' ? allStats.reduce((a,s) => a + (parseInt(s.Clean_Sheets)||0), 0) : null;
 
   const treinouA = j.Treinou_c_A === 'Sim';
   const jogouB = j.Jogou_na_B === 'Sim';
   const estreiaA = j.Estreia_Equipa_A ? j.Estreia_Equipa_A : false;
 
-  const escalaosList = [...new Set(allStats.map(s => `${s.Escalão} ${s.Equipa}`))];
+  const escalaosList = [...new Set(allStats.map(s => `${s['Escalão']} ${s.Equipa}`))];
 
   const main = document.getElementById('main-content');
   main.innerHTML = `
@@ -570,14 +573,14 @@ function renderJogador(zzId, escalaoOrigem) {
         <div>
           <div class="profile-name">
             ${j.Nome}
-            <img src="https://flagcdn.com/w40/${codPais}.png" style="height:18px;border-radius:2px;" title="${j.Nacionalidade||''}" onerror="this.style.display='none'">
+            <img src="https://flagcdn.com/w40/${codPais}.png" style="height:18px;border-radius:2px;" title="${j['Nacionalidade']||''}" onerror="this.style.display='none'">
           </div>
-          <div class="profile-meta">${posLabel[j.Posição]||j.Posição} · ${j.Idade} anos · ${j.Nacionalidade||''}</div>
+          <div class="profile-meta">${posLabel[j['Posição']]||j['Posição']} · ${j.Idade} anos · ${j['Nacionalidade']||''}</div>
           <div class="profile-meta" style="margin-top:4px;">Escalões: ${escalaosList.join(' · ')}</div>
         </div>
         <div class="profile-stats">
           <div class="p-stat"><div class="p-stat-val">${totalJogos}</div><div class="p-stat-label">Jogos</div></div>
-          ${j.Posição === 'GR'
+          ${j['Posição'] === 'GR'
             ? `<div class="p-stat"><div class="p-stat-val">${totalCS}</div><div class="p-stat-label">Clean Sheets</div></div>`
             : `<div class="p-stat"><div class="p-stat-val">${totalGolos}</div><div class="p-stat-label">Golos</div></div>`}
           <div class="p-stat"><div class="p-stat-val">${totalAM}</div><div class="p-stat-label">Amarelos</div></div>
@@ -610,7 +613,7 @@ function renderJogador(zzId, escalaoOrigem) {
             ? allStats.map(s => `<tr>
                 <td>2025/26</td>
                 <td>FC Porto</td>
-                <td><span class="evo-badge">${s.Escalão} ${s.Equipa} · ${s.Fase === 'Fase Regional Norte' ? 'Reg.' : 'Nac.'}</span></td>
+                <td><span class="evo-badge">${s['Escalão']} ${s.Equipa} · ${s.Fase === 'Fase Regional Norte' ? 'Reg.' : 'Nac.'}</span></td>
                 <td>${parseInt(s.Jogos)||0}</td>
                 <td>${parseInt(s.Golos)||0}</td>
                 <td>${parseInt(s.AM)||0}</td>
@@ -637,7 +640,7 @@ function renderMovimentos() {
       <span class="mov-date">${formatDate(m.Data)}</span>
       <span class="mov-badge ${cls}">${m.Tipo}</span>
       <span class="mov-name">${m.Nome_Jogador}</span>
-      <span class="mov-detail">${m.Detalhe||''} ${m.Escalão_Destino ? '→ '+m.Escalão_Destino : ''}</span>
+      <span class="mov-detail">${m.Detalhe||''} ${m['Escalão_Destino'] ? '→ '+m['Escalão_Destino'] : ''}</span>
     </li>`;
   }).join('');
 
